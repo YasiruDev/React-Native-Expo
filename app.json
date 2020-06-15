@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "BoilerPlate",
-    "slug": "BoilerPlate",
+    "name": "Picker-Client",
+    "slug": "Picker-Client",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [

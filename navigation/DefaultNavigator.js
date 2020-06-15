@@ -5,6 +5,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import Login from '../screens/Login';
 import Dashboard from '../screens/Dashboard';
 import Register from '../screens/Register'
+import MakeOrder from '../screens/MakeOrder'
 
 const defaultNav = {
   header: null
@@ -13,7 +14,8 @@ const defaultNav = {
 const homeStackNav = createStackNavigator({
   Login: Login,
   Register: Register,
-  Dashboard: Dashboard
+  Dashboard: Dashboard,
+  MakeOrder:MakeOrder
 }, {
     defaultNavigationOptions: defaultNav,
 
