@@ -7,7 +7,7 @@ import { AppLoading } from "expo";
 import { Provider } from "react-redux";
 import store from "./store";
 import DefaultNavigator from './navigation/DefaultNavigator';
-
+import Alert from './components/Alert'
 const loadFonts = () => {
   return Font.loadAsync({
     "NunitoSans-Bold": require("./assets/fonts/NunitoSans-Bold.ttf"),
@@ -30,7 +30,8 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <SafeAreaProvider>
+      <Alert/>
+      <SafeAreaProvider>        
         <DefaultNavigator />
       </SafeAreaProvider>
     </Provider>

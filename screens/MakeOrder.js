@@ -1,9 +1,11 @@
 import React from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import { View, StyleSheet, Picker, Text, TextInput, Button } from "react-native";
 import RootComponent from "../components/RootComponent";
 import UploadImage from '../lib/UploadImage';
 import BodyBold from "../components/UI/BodyBold";
-
+import {checkAlert} from "./../Actions"
 class MakeOrder extends React.Component {
     constructor(props) {
         super(props);
@@ -20,12 +22,27 @@ class MakeOrder extends React.Component {
                 }
             ],
             selectedValue: null,
-            tokenName:""
+            tokenName:"",
+            fileData : null
         };
         this.gotoLogin = this.gotoLogin.bind(this)
     }
+    componentWillReceiveProps(nextProps){
+        if(this.props.upoadedImg !== nextProps.upoadedImg){
+            this.setState({fileData:nextProps.upoadedImg})
+        }
+        
+    }
+
     gotoLogin() {
-        this.props.navigation.navigate('Login');
+        // this.props.checkAlert();
+        if(this.state.fileData){
+            this.props.navigation.navigate('Checkout',{fileData:this.state.fileData});
+        }
+        else{
+            //please uplod image
+        }
+       
     };
 
     dropDOwnList() {
@@ -34,11 +51,10 @@ class MakeOrder extends React.Component {
         })
     }
     setSelectedValue(value) {
-        console.log("selectedValue ", value)
         this.setState({ selectedValue: value })
     }
-    FetchedProfileImage(){
-
+    FetchedProfileImage(values){
+        console.log("---uploaded-->",values)
     }
     render() {
 
@@ -65,7 +81,7 @@ class MakeOrder extends React.Component {
                     />
                     
                     <Text>I already have an account</Text>
-                    <Button onPress={this.gotoLogin} title='Login' />
+                    <Button onPress={this.gotoLogin}  title='Submit' />
 
                 </View>
             </RootComponent>
@@ -78,5 +94,13 @@ const styles = StyleSheet.create({
         flex: 1
     }
 });
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({checkAlert  }, dispatch);
+  }
+  
+  function mapStateToProps({upoadedImg}) {
+    return { upoadedImg }
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(MakeOrder);
 
-export default MakeOrder;

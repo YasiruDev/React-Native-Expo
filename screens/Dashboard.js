@@ -10,15 +10,15 @@ class Dashboard extends React.Component {
     this.state = {
       orderList : [{id:1,title : 'abc vender has bid'},{id:2,title : 'xxx vender has bid'}]
     };
-    this.gotoLogin = this.gotoLogin.bind(this);
+    this.history = this.history.bind(this);
     this.myAccount = this.myAccount.bind(this);
     this.newOrder = this.newOrder.bind(this)
 }
-  gotoLogin() {
-    this.props.navigation.navigate('Login');
+  history() {
+    this.props.navigation.navigate('OrderHistory');
   };
   myAccount() {
-   
+   this.props.navigation.navigate("Profile");
   };
   newOrder() {
     this.props.navigation.navigate('MakeOrder');
@@ -47,7 +47,7 @@ class Dashboard extends React.Component {
 
             {this.renderOrderList()}
 
-          <Button onPress={this.gotoLogin.bind(this)} title='Order History' />
+          <Button onPress={this.history.bind(this)} title='Order History' />
           <Button onPress={this.myAccount.bind(this)} title='My account' />
           <Button onPress={this.newOrder.bind(this)} title='Make an Order' />
         </View>
