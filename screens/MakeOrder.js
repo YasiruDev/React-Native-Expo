@@ -69,10 +69,7 @@ class MakeOrder extends React.Component {
                     >
                         {this.dropDOwnList()}
                     </Picker>
-                    <TextInput
-                        style={{ height: 40, borderColor: 'gray', borderWidth: 1, }}
-                        placeholder="Password" />
-
+                   
                     <UploadImage
                         payloadKey='file' // Field name
                         endpoint='http://localhost:3002/api/protected/customer/upload' // url is fake replace with your own
@@ -80,7 +77,7 @@ class MakeOrder extends React.Component {
                         token={this.state.tokenName} // Api Token if no restriction ignore it
                     />
                     
-                    <Text>I already have an account</Text>
+                    
                     <Button onPress={this.gotoLogin}  title='Submit' />
 
                 </View>

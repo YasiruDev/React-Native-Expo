@@ -1,11 +1,9 @@
-import { SHOW_NOTIFICATION,CLEAR_NOTIFICATION } from "../Actions";
+import { REGISTER } from '../Actions';
 
 export default function (state = null, action) {
     switch (action.type) {
-        case SHOW_NOTIFICATION:
+        case REGISTER:
             return action.payload;
-        case CLEAR_NOTIFICATION:
-            return null;
         default:
             return state;
     }
