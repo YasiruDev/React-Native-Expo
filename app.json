@@ -3,7 +3,6 @@
     "name": "BoilerPlate",
     "slug": "BoilerPlate",
     "privacy": "public",
-    "sdkVersion": "35.0.0",
     "platforms": [
       "ios",
       "android",
