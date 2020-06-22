@@ -1,8 +1,18 @@
 import React from "react";
-import { View, StyleSheet, Text, TextInput, Button } from "react-native";
-
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { View, Image, Text, TouchableOpacity, TextInput, ImageBackground } from "react-native";
+import { Button } from 'react-native-elements';
 import RootComponent from "../components/RootComponent";
 import BodyBold from "../components/UI/BodyBold";
+
+import { login } from '../Actions'
+
+import bg_image from './../assets/images/bg_main.png'
+import btn from './../assets/images/btn.png'
+import app_logo from './../assets/images/app_logo.png'
+
+import styles from './../Styles/styles';
 
 class Register extends React.Component {
     constructor(props) {
@@ -15,40 +25,56 @@ class Register extends React.Component {
         this.props.navigation.navigate('Login');
     };
 
-
-    render() {
-        
-        return (
-            <RootComponent>
-                <View style={styles.screen}>
-                    <BodyBold>Sign Up</BodyBold>
-                    <TextInput
-                        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-                        placeholder="Name" />
-                    <TextInput
-                        style={{ height: 40, borderColor: 'gray', borderWidth: 1, }}
-                        placeholder="Mobile" />
-                    <TextInput
-                        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-                        placeholder="E-mail" />
-                    <TextInput
-                        style={{ height: 40, borderColor: 'gray', borderWidth: 1, }}
-                        placeholder="Password" />
-                    <Button onPress={this.gotoLogin.bind(this)} title='Continue' />
-
-                    <Text>I already have an account</Text>
-                    <Button onPress={this.gotoLogin} title='Login' />
-
-                </View>
-            </RootComponent>
-        );
+  componentWillReceiveProps(nextProps) {
+    const { navigate } = this.props.navigation;
+    if (nextProps.signIn) {
+      navigate('Dashboard');
     }
+
+  }
+
+  login() {
+    const { login } = this.props;
+    login('hii');
+  }
+  register() {
+    this.props.navigation.navigate('Register');
+  }
+  
+  render() {
+    const { signIn } = this.props;
+    console.log("signInsign------->", signIn)
+
+    return (
+      <RootComponent>
+        
+        <ImageBackground source={bg_image} style={styles.main_bg}>
+          <View style={styles.screen_flex_3}>
+              <View style={styles.screen_flex_1}>
+                  <Text style={styles.white_header_text}>Sign up</Text>
+                    <TextInput placeholder="Name" placeholderTextColor="#FFF"  style={styles.text_input_basic} />
+                    <TextInput placeholder="Mobile" placeholderTextColor="#FFF"  style={styles.text_input_basic} />
+                    <TextInput placeholder="E-mail" placeholderTextColor="#FFF"  style={styles.text_input_basic} />
+                    <TextInput placeholder="Password" placeholderTextColor="#FFF"  style={styles.text_input_basic} />
+
+              </View>
+              
+          </View>
+          <View style={styles.screen_flex_1}>
+                <TouchableOpacity activeOpacity={1} onPress={this.gotoLogin.bind(this)} style={styles.btn_green}>
+                  <ImageBackground source={btn} style={styles.button_bg}>
+                    <Text style={styles.btn_text}>Sign up</Text>
+                  </ImageBackground>
+                </TouchableOpacity>
+                <TouchableOpacity activeOpacity={1} onPress={this.gotoLogin} style={styles.text_link_wrap}>
+                    <Text style={styles.text_link}>I already have an account</Text>
+                </TouchableOpacity>
+          </View>
+        </ImageBackground>
+      </RootComponent>
+    );
+  }
 }
 
-const styles = StyleSheet.create({
-    screen: {
-        flex: 1
-    }
-});
 
 export default Register;
