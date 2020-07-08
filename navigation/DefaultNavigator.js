@@ -10,9 +10,11 @@ import Checkout from '../screens/Checkout'
 import Profile from '../screens/Profile'
 import OrderHistory from '../screens/OrderHistory'
 import BidsForOrder from '../screens/BidsForOrder'
+import Messages from '../screens/Messages'
 
 const defaultNav = {
-  header: null
+  header: null,
+  initialRouteName : 'Home',
 };
 
 const homeStackNav = createStackNavigator({
@@ -22,6 +24,7 @@ const homeStackNav = createStackNavigator({
   MakeOrder:MakeOrder,
   Checkout:Checkout,
   Profile: Profile,
+  Messages:Messages,
   OrderHistory:OrderHistory,
   BidsForOrder:BidsForOrder
 }, {

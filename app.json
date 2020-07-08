@@ -25,6 +25,11 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.yasiBiz.picker",
+      "versionCode": 1,
+      "icon":"./assets/appIcon.png"
     }
   }
 }

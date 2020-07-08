@@ -41,6 +41,7 @@ class Alert extends React.Component {
 
   render() {
     const { showAlert, message, type } = this.state;
+    const color = type ==='Success'?'#00ad3d':'#DD6B55'
     return (
       <View style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0 }}>
         <AwesomeAlert
@@ -52,7 +53,7 @@ class Alert extends React.Component {
           closeOnHardwareBackPress={false}
           showConfirmButton={true}
           confirmText="Ok"
-          confirmButtonColor="#DD6B55"
+          confirmButtonColor={color}
 
           onConfirmPressed={() => {
             this.hideAlert();

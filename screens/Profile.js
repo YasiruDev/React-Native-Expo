@@ -3,6 +3,7 @@ import { View, StyleSheet, Text,Image, Button } from "react-native";
 import Dialog from "react-native-dialog";
 import RootComponent from "../components/RootComponent";
 import BodyBold from "../components/UI/BodyBold";
+import { AsyncStorage } from "react-native";
 
 class Profile extends React.Component {
   constructor(props) {
@@ -19,7 +20,11 @@ class Profile extends React.Component {
   }
 
   signOut() {
-    this.props.navigation.navigate('Login');
+    AsyncStorage.clear();
+    AsyncStorage.getAllKeys()
+        .then(keys => AsyncStorage.multiRemove(keys))
+        .then(() =>this.props.navigation.navigate('Login'));
+    
   }
   orders() {
     this.props.navigation.navigate('OrderHistory');
